@@ -124,10 +124,7 @@ export default class QRCodeScanner extends Component {
         title: this.props.permissionDialogTitle,
         message: this.props.permissionDialogMessage,
       }).then(granted => {
-        const isAuthorized =
-          Platform.Version >= 23
-            ? granted === PermissionsAndroid.RESULTS.GRANTED
-            : granted === true;
+        const isAuthorized = granted === PermissionsAndroid.RESULTS.GRANTED || granted === true;
 
         this.setState({ isAuthorized, isAuthorizationChecked: true });
       });
